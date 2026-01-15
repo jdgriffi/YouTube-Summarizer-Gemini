@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Summarizer</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title-group">
+        <h1>YouTube Summarizer</h1>
+        <span class="version">Version 1.0</span>
+      </div>
+      <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+    </header>
+    
+    <div class="content">
+      <div id="authStatus" class="auth-status">
+        <div id="authInfo" class="auth-info hidden">
+          <span id="userEmail"></span>
+          <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+        </div>
+        <button id="signInBtn" class="sign-in-btn hidden">Sign in with Google (Experimental)</button>
+        <div id="apiKeyInfo" class="api-key-info">
+          <p>💡 <strong>Quick Start:</strong> Use an API key for reliable access. Click ⚙️ to configure.</p>
+          <button id="refreshBtn" class="refresh-btn">Refresh Status</button>
+        </div>
+      </div>
+      
+      <div id="status" class="status"></div>
+      
+      <div class="options-section">
+        <div class="options-row">
+          <div class="option-group">
+            <h3>Summary detail:</h3>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="detailLevel" value="Short">
+                <span>Short</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="detailLevel" value="Medium" checked>
+                <span>Medium</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="detailLevel" value="Long">
+                <span>Long</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="option-group font-option">
+            <h3>Font:</h3>
+            <div class="slider-group">
+              <input type="range" id="fontSizeSlider" min="1" max="5" value="3" step="1">
+              <div class="slider-labels">
+                <span>A</span>
+                <span>A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button id="summarizeBtn" class="summarize-btn" disabled>
+        Summarize Video
+      </button>
+      
+      <div id="summaryContainer" class="summary-container hidden">
+        <div class="summary-header">
+          <h2>Summary</h2>
+          <button id="copyBtn" class="copy-btn" title="Copy to Clipboard">📋 Copy</button>
+        </div>
+        <div id="summary" class="summary"></div>
+      </div>
+      
+      <div id="error" class="error hidden"></div>
+    </div>
+  </div>
+  
+  <script src="themes.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
+
