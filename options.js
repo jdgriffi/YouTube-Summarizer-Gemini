@@ -4,6 +4,9 @@ const apiKeyInput = document.getElementById('apiKey');
 const themeSelect = document.getElementById('themeSelect');
 const saveBtn = document.getElementById('saveBtn');
 const status = document.getElementById('status');
+const whatIsApiKey = document.getElementById('whatIsApiKey');
+const apiKeyModal = document.getElementById('apiKeyModal');
+const closeModal = document.getElementById('closeModal');
 
 // Load saved settings on page load
 chrome.storage.sync.get(['geminiApiKey', 'theme'], async (result) => {
@@ -49,6 +52,33 @@ saveBtn.addEventListener('click', async () => {
     showStatus('Error saving settings. Please try again.', 'error');
   }
 });
+
+// Modal handlers
+if (whatIsApiKey) {
+  whatIsApiKey.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (apiKeyModal) {
+      apiKeyModal.classList.remove('hidden');
+    }
+  });
+}
+
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    if (apiKeyModal) {
+      apiKeyModal.classList.add('hidden');
+    }
+  });
+}
+
+// Close modal when clicking outside
+if (apiKeyModal) {
+  apiKeyModal.addEventListener('click', (e) => {
+    if (e.target === apiKeyModal) {
+      apiKeyModal.classList.add('hidden');
+    }
+  });
+}
 
 function showStatus(message, type) {
   status.textContent = message;

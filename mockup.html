@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Summarizer - Design Mockup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      padding: 20px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .mockup-container {
+      width: 400px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* NEW DESIGN: Sleek glassmorphism header */
+    .header-new {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-new h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: #ffffff;
+    }
+
+    .version-new {
+      font-size: 10px;
+      color: #888;
+      margin-top: 4px;
+      font-weight: 500;
+      display: block;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .settings-btn-new, .font-btn-new {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-size: 16px;
+    }
+
+    .settings-btn-new:hover, .font-btn-new:hover {
+      background: rgba(255,255,255,0.1);
+      transform: scale(1.05);
+    }
+
+    .content-new {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Summary detail selector - standalone section */
+    .detail-section {
+      margin-bottom: 12px;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    /* Card design with subtle glow - much smaller */
+    .card-new {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 8px 12px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .card-new:hover {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .card-new.compact {
+      flex: 0 0 auto;
+      min-width: 80px;
+    }
+
+    /* Modern button - at bottom */
+    .btn-primary-new {
+      background: linear-gradient(180deg, #ffffff 0%, #f2f2f7 100%);
+      color: #000000;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      margin-top: auto;
+    }
+
+    .btn-primary-new::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primary-new:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary-new:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Radio buttons with modern pill design */
+    .radio-group-new {
+      display: flex;
+      gap: 6px;
+      background: rgba(255,255,255,0.02);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .radio-new {
+      flex: 1;
+      padding: 8px 12px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 12px;
+      font-weight: 500;
+      color: #a1a1a6;
+      background: #2c2c2e;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .radio-new.active {
+      background: linear-gradient(180deg, #48484a 0%, #3a3a3c 100%);
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      font-weight: 600;
+    }
+
+    /* Slider with modern track - compact */
+    .slider-container-new {
+      padding: 4px 0 2px 0;
+    }
+
+    .slider-new {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .slider-new::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
+      cursor: pointer;
+    }
+
+    /* Summary area - takes most space, no card styling */
+    .summary-card-new {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .summary-text-new {
+      color: #e0e0e0;
+      line-height: 1.7;
+      font-size: 14px;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .summary-text-new::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .summary-text-new::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 3px;
+    }
+
+    .summary-text-new::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+    }
+
+    .mockup-container {
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+    }
+
+    .content-new {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 20px;
+    }
+
+    .label-new {
+      font-size: 9px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .label-new.compact {
+      margin-bottom: 4px;
+    }
+
+    .comparison {
+      display: flex;
+      gap: 30px;
+      max-width: 900px;
+    }
+
+    .comparison h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #888;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .old-design {
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="comparison">
+    <!-- Current Design -->
+    <div class="mockup-container old-design">
+      <div style="background: linear-gradient(180deg, #1c1c1e 0%, #000000 100%); padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div>
+          <h1 style="font-size: 18px; font-weight: 600; color: white; margin-bottom: 2px;">YouTube Summarizer</h1>
+          <span style="font-size: 10px; opacity: 0.9;">Version 1.0</span>
+        </div>
+        <button style="background: transparent; border: none; color: white; font-size: 18px;">⚙️</button>
+      </div>
+      <div style="padding: 20px; background: #000;">
+        <div style="background: #1c1c1e; padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="font-size: 11px; color: #8e8e93; margin-bottom: 8px;">SUMMARY DETAIL:</h3>
+          <div style="display: flex; gap: 6px;">
+            <div style="flex: 1; padding: 6px; background: #2c2c2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center; font-size: 12px; color: #a1a1a6;">Short</div>
+            <div style="flex: 1; padding: 6px; background: linear-gradient(180deg, #48484a 0%, #3a3a3c 100%); border: 1px solid #fff; border-radius: 8px; text-align: center; font-size: 12px; color: #fff; font-weight: 600;">Medium</div>
+            <div style="flex: 1; padding: 6px; background: #2c2c2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; text-align: center; font-size: 12px; color: #a1a1a6;">Long</div>
+          </div>
+        </div>
+        <button style="background: linear-gradient(180deg, #ffffff 0%, #f2f2f7 100%); color: #000; border: none; padding: 14px 24px; border-radius: 12px; width: 100%; font-weight: 600; font-size: 16px;">Summarize Video</button>
+      </div>
+    </div>
+
+    <!-- NEW DESIGN MOCKUP -->
+    <div class="mockup-container">
+      <h3>New Design Concept</h3>
+      <div class="header-new">
+        <div>
+          <h1>YouTube Summarizer</h1>
+          <span class="version-new">Version 1.0</span>
+        </div>
+        <div class="header-icons">
+          <button class="font-btn-new">Aa</button>
+          <button class="settings-btn-new">⚙️</button>
+        </div>
+      </div>
+      
+      <div class="content-new">
+        <div class="detail-section">
+          <div class="detail-label">Summary detail:</div>
+          <div class="radio-group-new">
+            <div class="radio-new">Short</div>
+            <div class="radio-new active">Medium</div>
+            <div class="radio-new">Long</div>
+          </div>
+        </div>
+
+        <div class="summary-card-new">
+          <div class="summary-text-new">
+            <p style="margin-bottom: 12px;">• Gnaioning the video velimizes about due to care and reabres hume rachora:c vetual to semmratic culture</p>
+            <p style="margin-bottom: 12px;">• Boduroing a nnenchronization and video itiviry on to eveivate between panels eriter and emelvos and creation</p>
+            <p style="margin-bottom: 12px;">• Combins: the programmiits. detailiog reatter techiques that keep eantbinics, switching conounization and orlemization onto clive.</p>
+            <p style="margin-bottom: 12px;">The video summarize repkats a somote-solt onanning victual, Inardaduge to muntlincate fresiter. and below to mise the voicedi developent the frume video and both menitors general insonet, benenilts and protespote the proeorsaes the video events aliceu asociuting martering. The video video-needs to seeno criott-airty structure-and edil, in a okison complient are eventing the video arounding.</p>
+            <p style="margin-bottom: 12px;">More content to demonstrate the scrollable area. This summary section takes up the vast majority of the interface space, allowing users to focus on reading the generated summary.</p>
+            <p style="margin-bottom: 12px;">Additional paragraphs continue here to show how longer summaries would appear and scroll within the dedicated summary area.</p>
+          </div>
+        </div>
+
+        <button class="btn-primary-new">Summarize Video</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

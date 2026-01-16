@@ -13,7 +13,10 @@
         <h1>YouTube Summarizer</h1>
         <span class="version">Version 1.0</span>
       </div>
-      <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+      <div class="header-icons">
+        <button id="fontSizeBtn" class="font-btn" title="Font Size">Aa</button>
+        <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+      </div>
     </header>
     
     <div class="content">
@@ -31,49 +34,50 @@
       
       <div id="status" class="status"></div>
       
-      <div class="options-section">
-        <div class="options-row">
-          <div class="option-group">
-            <h3>Summary detail:</h3>
-            <div class="radio-group">
-              <label class="radio-label">
-                <input type="radio" name="detailLevel" value="Short">
-                <span>Short</span>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="detailLevel" value="Medium" checked>
-                <span>Medium</span>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="detailLevel" value="Long">
-                <span>Long</span>
-              </label>
-            </div>
-          </div>
-          
-          <div class="option-group font-option">
-            <h3>Font:</h3>
-            <div class="slider-group">
-              <input type="range" id="fontSizeSlider" min="1" max="5" value="3" step="1">
-              <div class="slider-labels">
-                <span>A</span>
-                <span>A</span>
-              </div>
-            </div>
-          </div>
+      <div class="detail-section">
+        <div class="detail-label">Summary detail:</div>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="detailLevel" value="Short">
+            <span>Short</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="detailLevel" value="Medium" checked>
+            <span>Medium</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="detailLevel" value="Long">
+            <span>Long</span>
+          </label>
         </div>
+      </div>
+      
+      <div id="summaryContainer" class="summary-container hidden">
+        <div class="summary-header-inline">
+          <button id="copyBtn" class="copy-btn" title="Copy to Clipboard">📋 Copy</button>
+        </div>
+        <div id="summary" class="summary"></div>
       </div>
       
       <button id="summarizeBtn" class="summarize-btn" disabled>
         Summarize Video
       </button>
       
-      <div id="summaryContainer" class="summary-container hidden">
-        <div class="summary-header">
-          <h2>Summary</h2>
-          <button id="copyBtn" class="copy-btn" title="Copy to Clipboard">📋 Copy</button>
+      <!-- Font Size Modal -->
+      <div id="fontSizeModal" class="font-size-modal hidden">
+        <div class="font-size-modal-content">
+          <div class="font-size-header">
+            <h3>Font Size</h3>
+            <button id="closeFontModal" class="close-modal-btn">×</button>
+          </div>
+          <div class="slider-group">
+            <input type="range" id="fontSizeSlider" min="1" max="5" value="3" step="1">
+            <div class="slider-labels">
+              <span>A</span>
+              <span>A</span>
+            </div>
+          </div>
         </div>
-        <div id="summary" class="summary"></div>
       </div>
       
       <div id="error" class="error hidden"></div>

@@ -14,6 +14,9 @@ const apiKeyInfo = document.getElementById('apiKeyInfo');
 const refreshBtn = document.getElementById('refreshBtn');
 const copyBtn = document.getElementById('copyBtn');
 const fontSizeSlider = document.getElementById('fontSizeSlider');
+const fontSizeBtn = document.getElementById('fontSizeBtn');
+const fontSizeModal = document.getElementById('fontSizeModal');
+const closeFontModal = document.getElementById('closeFontModal');
 
 let accessToken = null;
 let currentSummaryRaw = ''; // To store text without HTML for copying
@@ -28,6 +31,33 @@ if (refreshBtn) {
   refreshBtn.addEventListener('click', () => {
     console.log('Manual refresh triggered');
     checkAuthStatus();
+  });
+}
+
+// Font size button - open modal
+if (fontSizeBtn) {
+  fontSizeBtn.addEventListener('click', () => {
+    if (fontSizeModal) {
+      fontSizeModal.classList.remove('hidden');
+    }
+  });
+}
+
+// Close font size modal
+if (closeFontModal) {
+  closeFontModal.addEventListener('click', () => {
+    if (fontSizeModal) {
+      fontSizeModal.classList.add('hidden');
+    }
+  });
+}
+
+// Close modal when clicking outside
+if (fontSizeModal) {
+  fontSizeModal.addEventListener('click', (e) => {
+    if (e.target === fontSizeModal) {
+      fontSizeModal.classList.add('hidden');
+    }
   });
 }
 
@@ -640,8 +670,15 @@ summarizeBtn.addEventListener('click', async () => {
     summaryContainer.classList.remove('hidden');
     hideStatus();
   } catch (err) {
-    console.error('Error:', err);
-    showError(err.message || 'An error occurred while summarizing the video.');
+    const errorMessage = err.message || 'An error occurred while summarizing the video.';
+    
+    // Don't log user-friendly navigation messages as errors
+    if (errorMessage.includes('navigate to a YouTube')) {
+      showError(errorMessage);
+    } else {
+      console.error('Error:', err);
+      showError(errorMessage);
+    }
     hideStatus();
   } finally {
     summarizeBtn.disabled = false;

@@ -14,7 +14,10 @@
     
     <div class="content">
       <div class="section">
-        <h2>API Key (Recommended)</h2>
+        <h2>
+          API Key (Required)
+          <a href="#" id="whatIsApiKey" class="what-is-link">What is this?</a>
+        </h2>
         <p class="info-text">
           Enter your Gemini API key to get started. This is the most reliable authentication method.
         </p>
@@ -38,25 +41,30 @@
         </p>
         <label for="themeSelect">Theme</label>
         <select id="themeSelect" class="theme-select">
-          <option value="midnight">Midnight</option>
-          <option value="ocean">Ocean</option>
-          <option value="crimson">Crimson</option>
-          <option value="forest">Forest</option>
-          <option value="sunset">Sunset</option>
+          <option value="midnight">Dark Mode</option>
+          <option value="classic">Classic</option>
         </select>
-      </div>
-      
-      <div class="section">
-        <h2>OAuth (Experimental)</h2>
-        <p class="info-text">
-          OAuth sign-in is available in the sidebar, but requires additional setup and may not work 
-          with all Google accounts. Using an API key is recommended for best results.
-        </p>
       </div>
       
       <button id="saveBtn" class="save-btn">Save</button>
       
       <div id="status" class="status"></div>
+    </div>
+  </div>
+  
+  <!-- API Key Info Modal -->
+  <div id="apiKeyModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>What is an API Key?</h3>
+        <button id="closeModal" class="close-modal-btn">×</button>
+      </div>
+      <div class="modal-body">
+        <p>An API key is a unique identifier that allows this extension to securely communicate with Google's Gemini AI service to generate video summaries.</p>
+        <p><strong>What it's used for:</strong> The API key authenticates your requests to Google's Gemini API, enabling the extension to send YouTube video information and receive AI-generated summaries.</p>
+        <p><strong>Is it free?</strong> Yes! Google provides free API keys for Gemini. You can get your free API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>.</p>
+        <p><strong>Is it safe?</strong> Your API key is stored securely in your browser's local storage and is only used to make requests to Google's API. It is never shared with third parties.</p>
+      </div>
     </div>
   </div>
   

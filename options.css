@@ -47,6 +47,22 @@ header h1 {
   margin-bottom: 12px;
   color: var(--theme-text, #ffffff);
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.what-is-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--theme-accent, #64d2ff);
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.what-is-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
 .info-text {
@@ -149,5 +165,106 @@ select.theme-select {
   background: var(--theme-card, #1c1c1e);
   color: var(--theme-error, #ff453a);
   border-color: rgba(255, 69, 58, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--theme-card, #1c1c1e);
+  border: 1px solid var(--theme-border, rgba(255,255,255,0.1));
+  border-radius: 14px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--theme-border, rgba(255,255,255,0.1));
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--theme-text, #ffffff);
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: var(--theme-text, #ffffff);
+  font-size: 28px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-modal-btn:hover {
+  background: var(--theme-card-secondary, rgba(255,255,255,0.1));
+}
+
+.modal-body {
+  padding: 24px;
+  color: var(--theme-text, #ffffff);
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+.modal-body p {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-body strong {
+  font-weight: 600;
+  color: var(--theme-text, #ffffff);
+}
+
+.modal-body a {
+  color: var(--theme-accent, #64d2ff);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.modal-body a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
